@@ -1,21 +1,22 @@
+package Car;
 
 import java.util.*;
 
 /**
  * 
  */
-public class Wheel {
+public class Motor {
 
     /**
      * Default constructor
      */
-    public Wheel() {
+    public Motor() {
     }
 
     /**
      * 
      */
-    public void RandomKey() {
+    public void RandomNumber() {
 
     }
 
