@@ -15,6 +15,8 @@ public class SlowCar extends Cars {
     /**
      * 
      */
-    public void RandomWord;
+    public void RandomWord() {
+
+    }
 
 }

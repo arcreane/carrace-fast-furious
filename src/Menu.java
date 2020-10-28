@@ -15,12 +15,16 @@ public class Menu {
     /**
      * 
      */
-    public void Color;
+    public void Color () {
+
+    };
 
     /**
      * 
      */
-    public void ModeChoice;
+    public void ModeChoice () {
+
+    }
 
 
 

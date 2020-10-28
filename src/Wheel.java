@@ -15,7 +15,9 @@ public class Wheel {
     /**
      * 
      */
-    public void RandomKey;
+    public void RandomKey() {
+
+    }
 
 
 }

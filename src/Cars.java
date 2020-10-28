@@ -15,17 +15,23 @@ public class Cars {
     /**
      * 
      */
-    public void Start;
+    public void Start() {
+
+    };
 
     /**
      * 
      */
-    public void Drive;
+    public void Drive() {
+
+    }
 
     /**
      * 
      */
-    public void Happening;
+    public void Happening() {
+
+    }
 
 
 

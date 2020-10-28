@@ -15,7 +15,9 @@ public class Motor {
     /**
      * 
      */
-    public void RandomNumber;
+    public void RandomNumber() {
+
+    }
 
 
 }
