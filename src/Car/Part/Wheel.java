@@ -1,4 +1,4 @@
-package Car;
+package Car.Part;
 
 import java.util.*;
 
