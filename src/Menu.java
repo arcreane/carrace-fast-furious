@@ -1,29 +1,22 @@
-
 import org.fusesource.jansi.Ansi;
-
 import java.util.*;
-
 import static java.lang.System.out;
 
-/**
- * 
- */
 public class Menu {
 
     Scanner scan = new Scanner(System.in);
     int choiceCar;
+
     /**
-     * Default constructor
+     * Constructor
      */
     public Menu() {
 
     }
 
     /**
-     *
-     * @return
+     * Choose the mode, slow car or fast car
      */
-
     public void ModeChoice() {
 
         do {
@@ -45,12 +38,15 @@ public class Menu {
         }
     }
 
+    /**
+     * Return the choice mode
+     */
     public int choice() {
         return choiceCar;
     }
 
     /**
-     * @return
+     * Choose the color
      */
     public String Color() {
         boolean found = false;
@@ -68,7 +64,6 @@ public class Menu {
         } while (!found);
         StringBuilder buffer = new StringBuilder();
         System.out.println(buffer.append("You have selected this color :").append(color));
-
 
         return "";
     }

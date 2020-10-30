@@ -10,9 +10,10 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public class Display {
 
-
+    /**
+     * Display the menu
+     */
     public void displayMenu(){
-
         out.println("---------------------------------------------------------");
         out.println("|                                                       |");
         out.println("|            Welcome to Race against the clock          |");
@@ -23,15 +24,24 @@ public class Display {
         out.println("\t-Type 2 for a slow car but having 50% chance of having a speeding boost");
     }
 
+    /**
+     * Display the race
+     */
     public void displayRace(){
         out.println("---------------------------------------------------------");
 
     }
 
+    /**
+     * Display the score
+     */
     public void displayScore(){
 
     }
 
+    /**
+     * Display the color
+     */
     public void displayColor(){
         out.println(ansi().reset().a("Select the name of the color you have selected : "));
         out.println( ansi().reset().fg(RED).a("RED").reset() );
@@ -41,7 +51,5 @@ public class Display {
         out.println( ansi().reset().fg(BLUE).a("BLUE").reset() );
         out.println( ansi().reset().fg(WHITE).a("WHITE").reset() );
     }
-
-
 
 }

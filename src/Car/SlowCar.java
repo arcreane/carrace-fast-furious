@@ -11,9 +11,6 @@ import Car.Cars;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * 
- */
 public class SlowCar extends Cars implements InputUser{
     public static final String Word_Speed ="VITESSE";
     public static final int Time = 10_000;
@@ -27,6 +24,9 @@ public class SlowCar extends Cars implements InputUser{
 
     Random random = new Random();
 
+    /**
+     * Constructor
+     */
     public SlowCar(Ansi.Color color) {
         super(color);
         Speed=10f;
@@ -38,6 +38,10 @@ public class SlowCar extends Cars implements InputUser{
             CharacterSpeedList.add(c);
         }
     }
+
+    /**
+     * Method Boost
+     */
     public void setBoostLapRemaining(int BoostCycleRemaining) {
         Boost = BoostCycleRemaining;
         if (BoostCycleRemaining == 0)
@@ -45,6 +49,9 @@ public class SlowCar extends Cars implements InputUser{
         ConsoleModifier.WriteLine(4, Ansi.Color.WHITE, "Boost lap remaining :  " + BoostCycleRemaining);
     }
 
+    /**
+     * Savoir si un e évènement à eu lieu ou pas
+     */
     public boolean CheckEventHappening() {
         if (Boost > 0)
             setBoostLapRemaining(Boost - 1);
@@ -52,7 +59,10 @@ public class SlowCar extends Cars implements InputUser{
         return super.Happening();
     }
 
-    public void SpecialEvent() {
+    /**
+     * Méthode qui est appellée dans Cars et qui sert à l'évènement
+     */
+    public void EventSpecial() {
         super.EventSpecial();
         Collections.shuffle(CharacterSpeedList);
         ShuffleSpeed = CharacterSpeedList.stream().map(String::valueOf).collect(Collectors.joining());
@@ -69,6 +79,9 @@ public class SlowCar extends Cars implements InputUser{
 
     }
 
+    /**
+     * Traitement de la réponse de l'utilisateur par rapport à l'évènement
+     */
     public void ConsumeInput(String input, boolean p_bTimeLeft) {
         if (ShuffleSpeed.equals(input)) {
             if( p_bTimeLeft) {
@@ -85,7 +98,6 @@ public class SlowCar extends Cars implements InputUser{
         }
         EventFinished = true;
     }
-
 
     public int getAndAddLineNumber() {
         return LineNumber++;

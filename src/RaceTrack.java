@@ -18,21 +18,25 @@ public class RaceTrack extends Menu {
     int choice = super.choice();
 
     private boolean finishedRace = false;
-    private double Score;
-    private Cars Player;
+    private double score;
+    private Cars player;
 
     private float traveledDistance;
     private int nbLaps = 0;
 
     StringBuilder buffer = new StringBuilder();
 
-    public RaceTrack(Cars Player) {
-
+    public RaceTrack(Cars p_player) {
+        player = p_player;
     }
+
     public boolean isFinished() {
         return finishedRace;
     }
 
+    /**
+     * Start game timer
+     */
     void Timer() {
         gameTimer=new Timer();
         gameTimer.scheduleAtFixedRate(new TimerTask() {
@@ -44,12 +48,13 @@ public class RaceTrack extends Menu {
         start= new Date();
     }
 
-
-
+    /**
+     * Game with : race, time elapsed, distance travelled, laps number
+     */
     public void Race(){
-        traveledDistance+= 60 * Player.getSpeed();
+        traveledDistance+= 60 * player.getSpeed();
         int lineNumber =1;
-        if (Player.isEventFinished()){
+        if (player.isEventFinished()){
             consoleModifier.clearConsole();
         }
         buffer.setLength(0);
@@ -61,7 +66,7 @@ public class RaceTrack extends Menu {
         consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, buffer.toString());
         if (traveledDistance>10_000){
             nbLaps++;
-            if (Player.isEventFinished()){
+            if (player.isEventFinished()){
                 if (nbLaps<nbLapsMax){
                     buffer.setLength(0);
                     buffer.append("You have finished one lap : ").append(nbLapsMax - nbLaps).append("laps to end");
@@ -77,25 +82,29 @@ public class RaceTrack extends Menu {
         buffer.append(new String(new char[50]).replace('\0',' '));
         consoleModifier.WriteLine(lineNumber++,Ansi.Color.WHITE, buffer.toString());
         buffer.setLength(0);
-        buffer.append("Speed : ").append(Player.getSpeed()).append(new String(new char[50]).replace('\0',' '));
+        buffer.append("Speed : ").append(player.getSpeed()).append(new String(new char[50]).replace('\0',' '));
 
         consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, buffer.toString());
         if (lineNumber == 4)
             consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, new String(new char[100]).replace('\0', ' '));
         consoleModifier.WriteLine(5, Ansi.Color.WHITE, "----------------------------------------------------------- ");
-        if (Player.isEventFinished())
-            Player.Happening();
+        if (player.isEventFinished())
+            player.Happening();
 
         if (nbLaps == nbLapsMax) {
             gameTimer.cancel();
             gameTimer.purge();
             finishedRace = true;
-            Player.stopAll();
-            Score = new Date().getTime() - start.getTime();
+            player.stopAll();
+            score = new Date().getTime() - start.getTime();
         }
     }
+
+    /**
+     * Return score
+     */
     public double getScore() {
-        return Score;
+        return score;
     }
 
 }

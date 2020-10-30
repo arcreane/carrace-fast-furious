@@ -11,9 +11,6 @@ import java.util.Scanner;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
-/**
- * 
- */
 public class Game {
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -31,9 +28,13 @@ public class Game {
         Cars racingCar = null;
         int choiceCar;
 
+        /**
+         * Menu pour choisir la voiture
+         */
         displayMenu.displayMenu();
         do {
             var userSelect = scan.nextLine();
+            System.out.println("user selected = " + userSelect);
             choiceCar = Integer.parseInt(userSelect);
             try {
                 if (choiceCar != 1 && choiceCar != 2) {
@@ -45,6 +46,9 @@ public class Game {
 
         } while (choiceCar != 1 && choiceCar != 2);
 
+        /**
+         * Menu pour choisir la couleur de la voiture
+         */
         ClearConsole.clearConsole();
         displayMenu.displayColor();
         boolean found = false;
@@ -64,11 +68,17 @@ public class Game {
 
         ClearConsole.clearConsole();
 
+        /**
+         * Savoir le choix de l'utlisateur et renvoyer les caractéristiques et les méthodes associées
+         */
         if (choiceCar == 1)
             System.out.println("course rapide");
         else
             racingCar = new SlowCar(color);
 
+        /**
+         * Lancer la course
+         */
         System.out.println("Let the race Begin (hit Enter to start)");
         ClearConsole.clearConsole();
         RaceTrack race = new RaceTrack(racingCar);
