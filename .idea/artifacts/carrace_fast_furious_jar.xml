@@ -1,8 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="carrace-fast-furious:jar">
-    <output-path>$PROJECT_DIR$</output-path>
+  <artifact type="jar" name="carrace-fast-furious:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/carrace_fast_furious_jar</output-path>
     <root id="archive" name="carrace-fast-furious.jar">
-      <element id="module-output" name="carrace-fast-furious" />
       <element id="extracted-dir" path="$PROJECT_DIR$/jansi-2.0.1.jar" path-in-jar="/" />
     </root>
   </artifact>

@@ -35,7 +35,7 @@ public class PlayerInput {
     }
 
     /**
-     * sert pour l'évènement en appellant la méthode callingRoutine
+     * launch a thread with callingRoutine
      */
     public void manageInput() {
 
@@ -60,7 +60,7 @@ public class PlayerInput {
     }
 
     /**
-     * sert pour l'évènement
+     * serve the event
      */
     public void callingRoutine() {
         int threadId = staticThread;

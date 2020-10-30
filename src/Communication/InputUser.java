@@ -3,7 +3,7 @@ package Communication;
 public interface InputUser {
 
     /**
-     * Saisi de l'utilisateur
+     * User's entry
      */
 
     void ConsumeInput(String input, boolean p_bTimeLeft);

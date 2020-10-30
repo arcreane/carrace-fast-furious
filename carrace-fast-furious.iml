@@ -7,6 +7,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< Updated upstream
     <orderEntry type="library" name="jansi-2.0.1" level="project" />
+=======
+<<<<<<< Updated upstream
+    <orderEntry type="library" name="jansi-2.0.1" level="application" />
+=======
+    <orderEntry type="library" name="jansi-2.0.1" level="project" />
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   </component>
 </module>

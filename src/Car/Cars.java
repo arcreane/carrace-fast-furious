@@ -58,7 +58,7 @@ public abstract class Cars {
     }
 
     /**
-     * Si evènement fini ça l'écrit en maj
+     * If event is finish write it in uppercase
      */
     public void EventSpecial(){
         eventFinished=false;

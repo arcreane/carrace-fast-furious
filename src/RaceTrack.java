@@ -26,8 +26,13 @@ public class RaceTrack extends Menu {
 
     StringBuilder buffer = new StringBuilder();
 
+<<<<<<< Updated upstream
     public RaceTrack(Cars p_player) {
         player = p_player;
+=======
+    public RaceTrack(Cars player) {
+
+>>>>>>> Stashed changes
     }
 
     public boolean isFinished() {

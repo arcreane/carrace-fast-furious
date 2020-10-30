@@ -32,7 +32,7 @@ public class Game {
         ConsoleModifier.clearConsole();
 
         /**
-         * Menu pour choisir la voiture
+         * Menu to choose the car
          */
         displayMenu.displayMenu();
         do {
@@ -50,7 +50,7 @@ public class Game {
         } while (choiceCar != 1 && choiceCar != 2);
 
         /**
-         * Menu pour choisir la couleur de la voiture
+         * Menu to choose the car color
          */
         ClearConsole.clearConsole();
         displayMenu.displayColor();
@@ -72,7 +72,7 @@ public class Game {
         ClearConsole.clearConsole();
 
         /**
-         * Savoir le choix de l'utlisateur et renvoyer les caractéristiques et les méthodes associées
+         *Giving the user's choice to method
          */
         if (choiceCar == 1)
             System.out.println("course rapide");
@@ -80,7 +80,7 @@ public class Game {
             racingCar = new SlowCar(color);
 
         /**
-         * Lancer la course
+         * Start the race
          */
         System.out.println("Let the race Begin (hit Enter to start)");
         ClearConsole.clearConsole();

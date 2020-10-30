@@ -50,7 +50,7 @@ public class SlowCar extends Cars implements InputUser{
     }
 
     /**
-     * Savoir si un e évènement à eu lieu ou pas
+     * Test if an event is happening
      */
     public boolean CheckEventHappening() {
         if (boost > 0)
@@ -60,7 +60,7 @@ public class SlowCar extends Cars implements InputUser{
     }
 
     /**
-     * Méthode qui est appellée dans Cars et qui sert à l'évènement
+     * Method who serve to car and is about the event
      */
     public void EventSpecial() {
         super.EventSpecial();
@@ -80,7 +80,7 @@ public class SlowCar extends Cars implements InputUser{
     }
 
     /**
-     * Traitement de la réponse de l'utilisateur par rapport à l'évènement
+     * Test if the user respond correctly to the event
      */
     public void ConsumeInput(String input, boolean p_bTimeLeft) {
         if (shuffleSpeed.equals(input)) {

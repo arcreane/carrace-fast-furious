@@ -15,7 +15,7 @@ public class Menu {
     }
 
     /**
-     * Choose the mode, slow car or fast car
+     * Choose the mode, between slow car or fast car
      */
     public void ModeChoice() {
 
