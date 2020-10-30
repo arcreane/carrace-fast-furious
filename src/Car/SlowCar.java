@@ -46,7 +46,7 @@ public class SlowCar extends Cars implements InputUser{
         boost = BoostCycleRemaining;
         if (BoostCycleRemaining == 0)
             speed /= boostSpeed;
-        ConsoleModifier.WriteLine(4, Ansi.Color.WHITE, "Boost lap remaining :  " + BoostCycleRemaining);
+        ConsoleModifier.WriteLine(4, Ansi.Color.WHITE, "Boost lap remaining :  " + BoostCycleRemaining, false);
     }
 
     /**
@@ -69,8 +69,8 @@ public class SlowCar extends Cars implements InputUser{
         lineNumber = 6;
 
         ConsoleModifier.WriteLine(lineNumber++, color, "Type " + shuffleSpeed + " in less than "
-                + (TIME / 1000) + " second to get a speed boost");
-        ConsoleModifier.WriteLine(lineNumber++, color, "Hit enter to start typing");
+                + (TIME / 1000) + " second to get a speed boost", false);
+        ConsoleModifier.WriteLine(lineNumber++, color, "Hit enter to start typing", false);
 
         PlayerInput playerInput = new PlayerInput(this, color, TIME);
 
@@ -88,13 +88,13 @@ public class SlowCar extends Cars implements InputUser{
                 speed *= boostSpeed;
                 setBoostLapRemaining(boost + 4);
                 eventProba = 0;
-                ConsoleModifier.WriteLine(lineNumber++, color, "Well Done, your speed is now : " + speed);
+                ConsoleModifier.WriteLine(lineNumber++, color, "Well Done, your speed is now : " + speed, false);
             }
             else{
                 System.out.println("Sorry to slow");
             }
         } else if (!stop) {
-            ConsoleModifier.WriteLine(lineNumber++, color, "Sorry, wrong typing! " + input + " You'll do better next time");
+            ConsoleModifier.WriteLine(lineNumber++, color, "Sorry, wrong typing! " + input + " You'll do better next time", false);
         }
         eventFinished = true;
     }

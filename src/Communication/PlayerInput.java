@@ -23,7 +23,7 @@ public class PlayerInput {
     /**
      * Constructor
      */
-    public PlayerInput(InputUser p_inputUser, Ansi.Color p_color, int Time){
+    public PlayerInput(InputUser p_inputUser, Ansi.Color p_color, int p_time){
         staticThread++;
         prevThread = false;
         inputUser = p_inputUser;
@@ -31,7 +31,7 @@ public class PlayerInput {
         start = new Date();
         timeLeft = true;
         eventEnd = false;
-        time = Time;
+        time = p_time;
     }
 
     /**
@@ -78,14 +78,14 @@ public class PlayerInput {
                 }
             }
             if (threadId == staticThread)
-                ConsoleModifier.WriteLine(inputUser.getAndAddLineNumber(), color, "Type your sequence");
+                ConsoleModifier.WriteLine(inputUser.getAndAddLineNumber(), color, "Type your sequence", false);
             if (!prevThread) {
                 String ret = reader.readLine();
-                ConsoleModifier.WriteLine(inputUser.getLineNumber(), color, ConsoleModifier.getSpace(ret.length()));
+                ConsoleModifier.WriteLine(inputUser.getLineNumber(), color, ConsoleModifier.getSpace(ret.length()), false);
             } else
                 prevThread = false;
 
-            ConsoleModifier.WriteLine(inputUser.getLineNumber() - 1, color, "");
+            ConsoleModifier.WriteLine(inputUser.getLineNumber() - 1, color, "", false);
             String userInput = sc.nextLine();
             if (threadId == staticThread)
                 ConsoleModifier.userInput = false;
@@ -97,7 +97,7 @@ public class PlayerInput {
             }
         } catch (IOException | InterruptedException /*|AWTException */ e) {
 //            e.printStackTrace();
-            ConsoleModifier.WriteLine(20, color, "Interruption");
+            ConsoleModifier.WriteLine(20, color, "Interruption", false);
         }
     }
 

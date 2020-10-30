@@ -2,7 +2,6 @@
   <library name="jansi-2.0.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/jansi-2.0.1.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/jansi-2.0.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

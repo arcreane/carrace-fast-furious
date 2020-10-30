@@ -28,6 +28,9 @@ public class Game {
         Cars racingCar = null;
         int choiceCar;
 
+
+        ConsoleModifier.clearConsole();
+
         /**
          * Menu pour choisir la voiture
          */
@@ -64,7 +67,7 @@ public class Game {
             if (color != null)
                 found = true;
         } while (!found);
-        System.out.println(buffer.append("You have selected this color :").append(color));
+        System.out.println(buffer.append("You have selected this color : ").append(color));
 
         ClearConsole.clearConsole();
 
@@ -92,7 +95,7 @@ public class Game {
         }
         ConsoleModifier.clearConsole();
         buffer.setLength(0);
-        ConsoleModifier.WriteLine(0, Ansi.Color.WHITE,buffer.append("You have finished the race in : ").append(race.getScore() /1000).append("seconds").toString());
+        ConsoleModifier.WriteLine(0, Ansi.Color.WHITE,buffer.append("You have finished the race in : ").append(race.getScore() /1000).append("seconds").toString(), false);
 
     }
 }

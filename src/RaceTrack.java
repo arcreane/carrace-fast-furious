@@ -63,14 +63,14 @@ public class RaceTrack extends Menu {
         buffer.append(" secs");
         buffer.append(new String(new char[50]).replace('\0',' '));
 
-        consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, buffer.toString());
+        consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, buffer.toString(), false);
         if (traveledDistance>10_000){
             nbLaps++;
             if (player.isEventFinished()){
                 if (nbLaps<nbLapsMax){
                     buffer.setLength(0);
-                    buffer.append("You have finished one lap : ").append(nbLapsMax - nbLaps).append("laps to end");
-                    consoleModifier.WriteLine(lineNumber++,Ansi.Color.WHITE,buffer.toString());
+                    buffer.append("You have finished one lap : ").append(nbLapsMax - nbLaps).append(" laps to end");
+                    consoleModifier.WriteLine(lineNumber++,Ansi.Color.WHITE,buffer.toString(), false);
                 }
             }
             traveledDistance-= 10_000;
@@ -80,14 +80,14 @@ public class RaceTrack extends Menu {
         buffer.append(traveledDistance+10_000*nbLaps);
         buffer.append(" (Laps number : ").append(nbLaps).append(")");
         buffer.append(new String(new char[50]).replace('\0',' '));
-        consoleModifier.WriteLine(lineNumber++,Ansi.Color.WHITE, buffer.toString());
+        consoleModifier.WriteLine(lineNumber++,Ansi.Color.WHITE, buffer.toString(), false);
         buffer.setLength(0);
         buffer.append("Speed : ").append(player.getSpeed()).append(new String(new char[50]).replace('\0',' '));
 
-        consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, buffer.toString());
+        consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, buffer.toString(), false);
         if (lineNumber == 4)
-            consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, new String(new char[100]).replace('\0', ' '));
-        consoleModifier.WriteLine(5, Ansi.Color.WHITE, "----------------------------------------------------------- ");
+            consoleModifier.WriteLine(lineNumber++, Ansi.Color.WHITE, new String(new char[100]).replace('\0', ' '), false);
+        consoleModifier.WriteLine(5, Ansi.Color.WHITE, "----------------------------------------------------------- ", false);
         if (player.isEventFinished())
             player.Happening();
 
