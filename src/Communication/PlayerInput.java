@@ -8,42 +8,48 @@ import java.io.BufferedReader;
 
 
 public class PlayerInput {
-    static int StaticThread =0;
-    static private boolean PrevThread;
+    static int staticThread = 0;
+    static private boolean prevThread;
 
     private InputUser inputUser;
-    private Thread ThreadTyping;
-    private Ansi.Color Color;
+    private Thread threadTyping;
+    private Ansi.Color color;
     private Date start;
-    private boolean EventFinished;
-    private boolean TimeLeft;
-    private int Time;
-    private boolean EventEnd;
+    private boolean eventFinished;
+    private boolean timeLeft;
+    private int time;
+    private boolean eventEnd;
 
-    public PlayerInput(InputUser inputUser, Ansi.Color Color, int Time){
-        StaticThread++;
-        PrevThread=false;
-        inputUser =inputUser;
-        Color=Color;
-        start=new Date();
-        TimeLeft=true;
-        EventEnd=false;
-        Time=Time;
+    /**
+     * Constructor
+     */
+    public PlayerInput(InputUser p_inputUser, Ansi.Color p_color, int Time){
+        staticThread++;
+        prevThread = false;
+        inputUser = p_inputUser;
+        color = p_color;
+        start = new Date();
+        timeLeft = true;
+        eventEnd = false;
+        time = Time;
     }
 
+    /**
+     * sert pour l'évènement en appellant la méthode callingRoutine
+     */
     public void manageInput() {
 
-        ThreadTyping = new Thread(() -> CallingRoutine());
-        ThreadTyping.start();
+        threadTyping = new Thread(() -> callingRoutine());
+        threadTyping.start();
 
-        while ((new Date().getTime() - start.getTime()) < Time && !EventFinished) {
+        while ((new Date().getTime() - start.getTime()) < time && !eventFinished) {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 // e.printStackTrace();
             }
         }
-        TimeLeft = false;
+        timeLeft = false;
         manageEndLife();
 
         try {
@@ -53,47 +59,54 @@ public class PlayerInput {
         }
     }
 
-    public void CallingRoutine() {
-        int threadId = StaticThread;
+    /**
+     * sert pour l'évènement
+     */
+    public void callingRoutine() {
+        int threadId = staticThread;
 
-        ConsoleModifier.UserInput = true;
+        ConsoleModifier.userInput = true;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Scanner sc = new Scanner(reader);
         try {
             //While there is no input to be processed
-            while (!reader.ready() && !PrevThread) {
+            while (!reader.ready() && !prevThread) {
                 //This lets throw an InterruptedException
                 Thread.sleep(100);
-                if (threadId != StaticThread && !PrevThread) {
+                if (threadId != staticThread && !prevThread) {
                     Thread.currentThread().interrupt();
                 }
             }
-            if (threadId == StaticThread)
-                ConsoleModifier.WriteLine(inputUser.getAndAddLineNumber(), Color, "Type your sequence");
-            if (!PrevThread) {
+            if (threadId == staticThread)
+                ConsoleModifier.WriteLine(inputUser.getAndAddLineNumber(), color, "Type your sequence");
+            if (!prevThread) {
                 String ret = reader.readLine();
-                ConsoleModifier.WriteLine(inputUser.getLineNumber(), Color, ConsoleModifier.getSpace(ret.length()));
+                ConsoleModifier.WriteLine(inputUser.getLineNumber(), color, ConsoleModifier.getSpace(ret.length()));
             } else
-                PrevThread = false;
+                prevThread = false;
 
-            ConsoleModifier.WriteLine(inputUser.getLineNumber() - 1, Color, "");
+            ConsoleModifier.WriteLine(inputUser.getLineNumber() - 1, color, "");
             String userInput = sc.nextLine();
-            if (threadId == StaticThread)
-                ConsoleModifier.UserInput = false;
+            if (threadId == staticThread)
+                ConsoleModifier.userInput = false;
 
-            if (threadId != StaticThread) {
-                PrevThread = true;
+            if (threadId != staticThread) {
+                prevThread = true;
             } else {
-                inputUser.ConsumeInput(userInput, TimeLeft);
+                inputUser.ConsumeInput(userInput, timeLeft);
             }
         } catch (IOException | InterruptedException /*|AWTException */ e) {
 //            e.printStackTrace();
-            ConsoleModifier.WriteLine(20, Color, "Interruption");
+            ConsoleModifier.WriteLine(20, color, "Interruption");
         }
     }
+
+    /**
+     *
+     */
     public void manageEndLife() {
-        if (ThreadTyping.isAlive()) {
-            ThreadTyping.interrupt();
+        if (threadTyping.isAlive()) {
+            threadTyping.interrupt();
         }
     }
 

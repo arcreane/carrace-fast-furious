@@ -8,19 +8,19 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public abstract class Cars {
     Random random;
-    boolean Stop;
+    boolean stop;
     public int eventProba;
-    Ansi.Color Color;
-    protected boolean EventFinished;
-    protected float Speed;
+    Ansi.Color color;
+    protected boolean eventFinished;
+    protected float speed;
 
     /**
      * Constructor
      */
-    public Cars(Ansi.Color color) {
-        Color = color;
-        EventFinished = true;
-        Stop = false;
+    public Cars(Ansi.Color p_color) {
+        color = p_color;
+        eventFinished = true;
+        stop = false;
         random = new Random();
     }
 
@@ -28,21 +28,21 @@ public abstract class Cars {
      * get the car's speed
      */
     public float getSpeed() {
-        return Speed;
+        return speed;
     }
 
     /**
      * race finished
      */
     public boolean isEventFinished() {
-        return EventFinished;
+        return eventFinished;
     }
 
     /**
      *
      */
     public void stopAll() {
-        Stop = true;
+        stop = true;
     }
 
     /**
@@ -61,7 +61,7 @@ public abstract class Cars {
      * Si evènement fini ça l'écrit en maj
      */
     public void EventSpecial(){
-        EventFinished=false;
-        System.out.println(ansi().fg(Color).a(Ansi.Attribute.INTENSITY_BOLD));
+        eventFinished=false;
+        System.out.println(ansi().fg(color).a(Ansi.Attribute.INTENSITY_BOLD));
     }
 }

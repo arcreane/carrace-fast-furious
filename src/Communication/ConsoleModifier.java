@@ -6,8 +6,11 @@ import java.io.IOException;
 
 public class ConsoleModifier {
     private static ProcessBuilder builder = new ProcessBuilder("/bin/sh","-c","clear").inheritIO();
-    static public boolean UserInput = false;
+    static public boolean userInput = false;
 
+    /**
+     * Clear console
+     */
     public static void clearConsole(){
         try {
             builder.start().waitFor();
