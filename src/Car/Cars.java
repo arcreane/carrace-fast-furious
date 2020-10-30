@@ -1,37 +1,51 @@
 package Car;
 
-import java.util.*;
+import org.fusesource.jansi.Ansi;
+
+import java.util.Random;
+
+import static org.fusesource.jansi.Ansi.ansi;
+
 
 /**
  * 
  */
-public class Cars {
+public abstract class Cars {
+    Random random;
+    boolean Stop;
+    public int eventProba;
+    Ansi.Color Color;
+    protected boolean EventFinished;
+    protected float Speed;
 
-    /**
-     * Default constructor
-     */
-    public Cars() {
+    public Cars(Ansi.Color color) {
+        Color = color;
+        EventFinished = true;
+        Stop = false;
+        random = new Random();
+    }
+    public float getSpeed() {
+        return Speed;
     }
 
-    /**
-     * 
-     */
-    public void Start() {
-
-    };
-
-    /**
-     * 
-     */
-    public void Drive() {
-
+    public boolean isEventFinished() {
+        return EventFinished;
+    }
+    public void stopAll() {
+        Stop = true;
     }
 
-    /**
-     * 
-     */
-    public void Happening() {
-
+    public boolean Happening() {
+        var luck = random.nextInt(100);
+        if (luck<= eventProba){
+            EventSpecial();
+            return true;
+        }
+        return false;
+    }
+    public void EventSpecial(){
+        EventFinished=false;
+        System.out.println(ansi().fg(Color).a(Ansi.Attribute.INTENSITY_BOLD));
     }
 
 
