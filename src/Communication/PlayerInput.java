@@ -20,11 +20,11 @@ public class PlayerInput {
     private int Time;
     private boolean EventEnd;
 
-    public PlayerInput(InputUser inputUser, Ansi.Color Color, int Time){
+    public PlayerInput(InputUser inputUser, Ansi.Color color, int Time){
         StaticThread++;
         PrevThread=false;
         inputUser =inputUser;
-        Color=Color;
+        Color=color;
         start=new Date();
         TimeLeft=true;
         EventEnd=false;
@@ -69,14 +69,14 @@ public class PlayerInput {
                 }
             }
             if (threadId == StaticThread)
-                ConsoleModifier.WriteLine(inputUser.getAndAddLineNumber(), Color, "Type your sequence");
+                ConsoleModifier.WriteLine(inputUser.getAndAddLineNumber(), Color, "Type your sequence",false);
             if (!PrevThread) {
                 String ret = reader.readLine();
-                ConsoleModifier.WriteLine(inputUser.getLineNumber(), Color, ConsoleModifier.getSpace(ret.length()));
+                ConsoleModifier.WriteLine(inputUser.getLineNumber(), Color, ConsoleModifier.getSpace(ret.length()),false);
             } else
                 PrevThread = false;
 
-            ConsoleModifier.WriteLine(inputUser.getLineNumber() - 1, Color, "");
+            ConsoleModifier.WriteLine(inputUser.getLineNumber() - 1, Color, "",false);
             String userInput = sc.nextLine();
             if (threadId == StaticThread)
                 ConsoleModifier.UserInput = false;
@@ -87,8 +87,8 @@ public class PlayerInput {
                 inputUser.ConsumeInput(userInput, TimeLeft);
             }
         } catch (IOException | InterruptedException /*|AWTException */ e) {
-//            e.printStackTrace();
-            ConsoleModifier.WriteLine(20, Color, "Interruption");
+            e.printStackTrace();
+            ConsoleModifier.WriteLine(20, Color, "Interruption",false);
         }
     }
     public void manageEndLife() {

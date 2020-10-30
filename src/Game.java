@@ -31,6 +31,7 @@ public class Game {
         /**
          * Menu pour choisir la voiture
          */
+        ConsoleModifier.clearConsole();
         displayMenu.displayMenu();
         do {
             var userSelect = scan.nextLine();
@@ -92,7 +93,7 @@ public class Game {
         }
         ConsoleModifier.clearConsole();
         buffer.setLength(0);
-        ConsoleModifier.WriteLine(0, Ansi.Color.WHITE,buffer.append("You have finished the race in : ").append(race.getScore() /1000).append("seconds").toString());
+        ConsoleModifier.WriteLine(0, Ansi.Color.WHITE,buffer.append("You have finished the race in : ").append(race.getScore() /1000).append("seconds").toString(),false);
 
     }
 }
